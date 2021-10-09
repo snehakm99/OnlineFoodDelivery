@@ -16,7 +16,7 @@ import com.demo.food.entity.Address;
 public interface ICustomerDao extends JpaRepository<Customer, Integer> {
 		
 	//@Query("Select c from Customer c inner join ")
-	List<Customer> viewAllCustomerByAddress(@Param("addressId")String addressId);
+	//List<Customer> viewAllCustomerByAddress(@Param("addressId")String addressId);
 	
 	Optional<Customer> findByFirstName(String firstName);
 

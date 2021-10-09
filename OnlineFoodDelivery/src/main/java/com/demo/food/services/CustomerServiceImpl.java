@@ -56,10 +56,10 @@ public class CustomerServiceImpl implements ICustomerService {
 	
 	}
 
-	@Override
-	public List<Customer> viewAllCustomerByAddress(String addressId) {
-		return customerDao.viewAllCustomerByAddress(addressId);
-	}
+	//@Override
+	//public List<Customer> viewAllCustomerByAddress(String addressId) {
+		//return customerDao.viewAllCustomerByAddress(addressId);
+	//}
 
 
 }

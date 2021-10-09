@@ -17,7 +17,7 @@ public interface ICustomerService {
 	
 	Customer updateCustomer(int customerId, Customer customer);
 	
-	List<Customer> viewAllCustomerByAddress(String addressId);
+	//List<Customer> viewAllCustomerByAddress(String addressId);
 	//viewAllCustomer(Restaurant rest) 
 	
 
