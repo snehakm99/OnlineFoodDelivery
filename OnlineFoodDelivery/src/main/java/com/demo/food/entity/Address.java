@@ -3,12 +3,15 @@ package com.demo.food.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -17,8 +20,7 @@ import javax.persistence.Table;
 public class Address {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	
+	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "addressId")
 	private int addressId;
 	@Column(name = "buildingName")
@@ -36,9 +38,8 @@ public class Address {
 	@Column(name = "pincode")
 	private String pincode;
 	
-	
-	@OneToOne
-	@JoinColumn(name = "customer_fk")
+	@JsonIgnore
+	@OneToOne(fetch=FetchType.LAZY,mappedBy="address")
 	private Customer customer;
 	
 	

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -34,22 +35,18 @@ public class Customer {
 	@Column(name="age")
 	private int age;
 	@Column(name="mobileNumber")
-	private String mobileNumber;
+	private String mobileNumber; 
 	@Column(name="caddress")
 	private String caddress;
 	@Column(name="email")
 	private String email;
 	
-	@JsonIgnore
-	//@OneToOne(targetEntity=Address.class, mappedBy= "customer")
-	@OneToOne(mappedBy="customer",cascade=CascadeType.ALL)
-	@JoinColumn(name="address")
-	private List<Address> address=new ArrayList<>();
-	
-	
-	
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="address_fk")
+	private Address address;
+
 	public Customer(int customerId, String firstName, String lastName, String gender, int age, String mobileNumber,
-			String caddress, String email) {
+			String caddress, String email, Address address) {
 		super();
 		this.customerId = customerId;
 		this.firstName = firstName;
@@ -59,114 +56,87 @@ public class Customer {
 		this.mobileNumber = mobileNumber;
 		this.caddress = caddress;
 		this.email = email;
+		this.address = address;
 	}
-
-
 
 	public int getCustomerId() {
 		return customerId;
 	}
 
-
-
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-
-
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
-
 
 	public String getLastName() {
 		return lastName;
 	}
 
-
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-
 
 	public String getGender() {
 		return gender;
 	}
 
-
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
-
 
 	public int getAge() {
 		return age;
 	}
 
-
-
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-
 
 	public String getMobileNumber() {
 		return mobileNumber;
 	}
 
-
-
 	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
-
-
 
 	public String getCaddress() {
 		return caddress;
 	}
 
-
-
 	public void setCaddress(String caddress) {
 		this.caddress = caddress;
 	}
-
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
 
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", gender=" + gender + ", age=" + age + ", mobileNumber=" + mobileNumber + ", caddress=" + caddress
-				+ ", email=" + email + "]";
+				+ ", email=" + email+"]";
 	}
 	
-	
-
 			
 }
